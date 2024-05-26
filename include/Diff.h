@@ -40,7 +40,8 @@ protected:
     Expression* right_;
 public:
     Binary(Expression* left, Expression* right);
-    // Expression* clone();
+    std::string to_string() const;
+    virtual std::string get_op() const = 0;
     ~Binary();
 };
 
@@ -49,7 +50,7 @@ public:
     Add(Expression* left, Expression* right);
     Expression* diff(std::string var);
     Expression* clone();
-    std::string to_string() const;
+    std::string get_op() const override;
 };
 
 class Sub : public Binary {
@@ -57,7 +58,7 @@ public:
     Sub(Expression* left, Expression* right);
     Expression* diff(std::string var);
     Expression* clone();
-    std::string to_string() const;
+    std::string get_op() const override;
 };
 
 class Mul : public Binary {
@@ -65,7 +66,7 @@ public:
     Mul(Expression* left, Expression* right);
     Expression* diff(std::string var);
     Expression* clone();
-    std::string to_string() const;
+    std::string get_op() const override;
 };
 
 class Div : public Binary {
@@ -73,7 +74,7 @@ public:
     Div(Expression* left, Expression* right);
     Expression* diff(std::string var);
     Expression* clone();
-    std::string to_string() const;
+    std::string get_op() const override;
 };
 
 class Unary : public Expression {
@@ -81,6 +82,7 @@ protected:
     Expression* arg_;
 public:
     Unary(Expression* arg);
+    // std::to_string() const;
     // Expression* clone();
     ~Unary();
 };

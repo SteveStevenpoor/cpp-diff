@@ -46,6 +46,10 @@ Binary::~Binary() {
     if (left_) delete(left_);
     if (right_) delete(right_);
 }
+
+std::string Binary::to_string() const {
+    return ("(" + left_->to_string() + this->get_op() + right_->to_string() + ")");
+}
 // Binary
 
 // Add
@@ -59,8 +63,8 @@ Expression* Add::clone() {
     return new Add(left_->clone(), right_->clone());
 }
 
-std::string Add::to_string() const {
-    return ("(" + left_->to_string() + "+" + right_->to_string() + ")");
+std::string Add::get_op() const {
+    return "+";
 }
 // Add
 
@@ -75,8 +79,8 @@ Expression* Sub::clone() {
     return new Sub(left_->clone(), right_->clone());
 }
 
-std::string Sub::to_string() const {
-    return ("(" + left_->to_string() + "-" + right_->to_string() + ")");
+std::string Sub::get_op() const {
+    return "-";
 }
 // Sub
 
@@ -91,8 +95,8 @@ Expression* Mul::diff(std::string var) {
     return new Add(new Mul(left_->diff(var), right_->clone()), new Mul(left_->clone(), right_->diff(var)));
 }
 
-std::string Mul::to_string() const {
-    return ("(" + left_->to_string() + "*" + right_->to_string() + ")");
+std::string Mul::get_op() const {
+    return "*";
 }
 // Mul
 
@@ -108,8 +112,8 @@ Expression* Div::diff(std::string var) {
      new Mul(right_->diff(var), left_->clone())),new Mul(right_->clone(), right_->clone()));
 }
 
-std::string Div::to_string() const {
-    return ("(" + left_->to_string() + "/" + right_->to_string() + ")");
+std::string Div::get_op() const {
+    return "/";
 }
 // Div
 
