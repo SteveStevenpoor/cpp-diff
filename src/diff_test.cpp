@@ -128,3 +128,7 @@ TEST(diff, TestingExp) {
     delete(diff_exp1);
     delete(diff_exp2);
 }
+
+TEST(wrong, WrongTest) {
+    EXPECT_EQ(0, 1);
+}
