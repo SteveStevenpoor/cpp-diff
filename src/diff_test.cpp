@@ -131,5 +131,6 @@ TEST(diff, TestingExp) {
 
 TEST(wrong, WrongTest) {
     EXPECT_EQ(0, 1);
-    EXPECT_EQ(0, 0);
+    EXPECT_EQ(0, 1);
+    EXPECT_EQ(1, 1);
 }
